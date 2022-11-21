@@ -19,7 +19,7 @@ void StackInit(Stack **ptrStack) {
 void StackPush(Stack **ptrStack, int pushValue) {
 	if ((*ptrStack)->elementUsed != -1) {
 		(*ptrStack)->topElement = (Stack *) malloc( sizeof(Stack)*1);
-		(*ptrStack)->topElement->bottomElement = ptrStack;
+		(*ptrStack)->topElement->bottomElement = (*ptrStack);
 		(*ptrStack) = (*ptrStack)->topElement;
 	}
 	(*ptrStack)->value = pushValue;
@@ -32,7 +32,7 @@ int StackPop(Stack **ptrStack) {
 	} else {
 		int returnValue = (*ptrStack)->value;
 		if ((*ptrStack)->bottomElement != NULL) {
-			ptrStack = (*ptrStack)->bottomElement;
+			(*ptrStack) = (*ptrStack)->bottomElement;
 			free((*ptrStack)->topElement);
 		} else {
 			(*ptrStack)->elementUsed = -1;
