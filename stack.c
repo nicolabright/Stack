@@ -22,6 +22,7 @@ void StackPush(Stack **ptrStack, int pushValue) {
 		(*ptrStack)->topElement->bottomElement = (*ptrStack);
 		(*ptrStack) = (*ptrStack)->topElement;
 	}
+	(*ptrStack)->topElement = NULL;
 	(*ptrStack)->value = pushValue;
 	(*ptrStack)->elementUsed = 0;
 }
@@ -34,6 +35,7 @@ int StackPop(Stack **ptrStack) {
 		if ((*ptrStack)->bottomElement != NULL) {
 			(*ptrStack) = (*ptrStack)->bottomElement;
 			free((*ptrStack)->topElement);
+			(*ptrStack)->topElement = NULL;
 		} else {
 			(*ptrStack)->elementUsed = -1;
 		}
@@ -44,7 +46,8 @@ int StackPop(Stack **ptrStack) {
 void StackPrint(Stack **ptrStack) {
 	Stack *scanStack = (*ptrStack);
 	printf("-- Stack ----------------------------\n");
-	while (scanStack->elementUsed != -1) {
+	// while (scanStack->elementUsed != -1) {		// Non va bene
+	while (scanStack->bottomElement != NULL) {
 		printf("[ %d\t ]\n", scanStack->value);
 		scanStack = scanStack->bottomElement;
 	}
@@ -60,6 +63,8 @@ void main() {
 //	StackPrint(&myStack);
 
 	StackPush(&myStack, 2);
+	StackPush(&myStack, 3);
+	StackPush(&myStack, 4);
 	StackPrint(&myStack);
 
 //	StackPrint(myStack);
