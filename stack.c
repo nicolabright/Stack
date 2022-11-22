@@ -46,10 +46,12 @@ int StackPop(Stack **ptrStack) {
 void StackPrint(Stack **ptrStack) {
 	Stack *scanStack = (*ptrStack);
 	printf("-- Stack ----------------------------\n");
-	// while (scanStack->elementUsed != -1) {		// Non va bene
-	while (scanStack->bottomElement != NULL) {
+	while ( (scanStack->bottomElement != NULL) ) {
 		printf("[ %d\t ]\n", scanStack->value);
 		scanStack = scanStack->bottomElement;
+	};
+	if (scanStack->elementUsed == 0) {
+		printf("[ %d\t ]\n", scanStack->value);
 	}
 	printf("-------------------------------------\n");
 }
@@ -67,26 +69,27 @@ void main() {
 	StackPush(&myStack, 4);
 	StackPrint(&myStack);
 
-//	StackPrint(myStack);
+	StackPush(&myStack, 3);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPush(&myStack, 4);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPush(&myStack, 5);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
 
-/*
-	StackPush(myStack, 3);
-	printf("Pop: %d\n", StackPop(myStack));
-	StackPush(myStack, 4);
-	printf("Pop: %d\n", StackPop(myStack));
-	StackPush(myStack, 5);
-	printf("Pop: %d\n", StackPop(myStack));
-	StackPrint(myStack);
-	printf("Pop: %d\n", StackPop(myStack));
+	printf("Pop: %d\n", StackPop(&myStack));
+	printf("Pop: %d\n", StackPop(&myStack));
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	printf("Pop: %d\n", StackPop(&myStack));
+	printf("Pop: %d\n", StackPop(&myStack));
+	printf("Pop: %d\n", StackPop(&myStack));
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
 
-	printf("Pop: %d\n", StackPop(myStack));
-	printf("Pop: %d\n", StackPop(myStack));
-	printf("Pop: %d\n", StackPop(myStack));
-	printf("Pop: %d\n", StackPop(myStack));
-	printf("Pop: %d\n", StackPop(myStack));
-	printf("Pop: %d\n", StackPop(myStack));
-	printf("Pop: %d\n", StackPop(myStack));
-	printf("Pop: %d\n", StackPop(myStack));
-*/
 	printf("==============================================================\n");
 }
