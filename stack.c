@@ -7,14 +7,9 @@ typedef struct StackElement {
 } Stack;
 
 void StackPush(Stack **ptrStack, int pushValue) {
-	if ( (*ptrStack) == NULL ) {
-		(*ptrStack) = (Stack *) malloc( sizeof(Stack) );
-		(*ptrStack)->bottomElement = NULL;
-	} else {
-		Stack *next = (Stack *) malloc( sizeof(Stack) );
-		next->bottomElement = (*ptrStack);
-		(*ptrStack) = next;
-	}
+	Stack *next = (Stack *) malloc( sizeof(Stack) );
+	next->bottomElement = (*ptrStack);
+	(*ptrStack) = next;
 	(*ptrStack)->value = pushValue;
 }
 
@@ -37,32 +32,34 @@ void StackPrint(Stack **ptrStack) {
 	printf("-------------------------------------\n");
 }
 
-
 void main() {
 	Stack *myStack = NULL;
 	StackPush(&myStack, 1);
-	StackPrint(&myStack);
 	StackPush(&myStack, 2);
-	StackPrint(&myStack);
 	StackPush(&myStack, 3);
 	StackPrint(&myStack);
 	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	StackPrint(&myStack);
 	StackPush(&myStack, 4);
 	StackPush(&myStack, 5);
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
 	StackPush(&myStack, 6);
 	StackPush(&myStack, 7);
+	StackPush(&myStack, 8);
 	StackPrint(&myStack);
 	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
-	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
 	printf("Pop: %d\n", StackPop(&myStack));
 	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
 }
