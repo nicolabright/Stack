@@ -32,7 +32,7 @@ void StackPrint(Stack **ptrStack) {
 	printf("-------------------------------------\n");
 }
 
-void main() {
+int main() {
 	Stack *myStack = NULL;
 	StackPush(&myStack, 1);
 	StackPush(&myStack, 2);
@@ -73,4 +73,13 @@ void main() {
 	printf("Pop: %d\n", StackPop(&myStack));
 	StackPrint(&myStack);
 	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	StackPush(&myStack, 9);
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	StackPrint(&myStack);
+	printf("Pop: %d\n", StackPop(&myStack));
+	return(0);
 }
