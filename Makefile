@@ -1,5 +1,5 @@
 all:    stack.c
-	gcc stack.c -o stack.exe
+	gcc -g stack.c -o stack.exe
 	@ cls
 	@ stack.exe
 
