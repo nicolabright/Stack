@@ -1,6 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+	STACK
+	-----
+
+	Inizializzazione:
+		Stack *myStack = NULL;
+
+	Operazione PUSH:
+		StackPush(&myStack, 1);		/// <<<--- 1
+
+	Operazione TOP:
+		StackTop(&myStack)			/// --->>> (valore int)
+
+	Operazione POP:
+		StackPop(&myStack)			/// --->>> (valore int)
+
+*/
+
 typedef struct StackElement {
 	struct StackElement *bottomElement;
 	int value;
@@ -11,6 +29,11 @@ void StackPush(Stack **ptrStack, int pushValue) {
 	next->bottomElement = (*ptrStack);
 	(*ptrStack) = next;
 	(*ptrStack)->value = pushValue;
+}
+
+int StackTop(Stack **ptrStack) {
+	if ( (*ptrStack) == NULL ) return (0);
+	return ( (*ptrStack)->value );
 }
 
 int StackPop(Stack **ptrStack) {
@@ -54,6 +77,7 @@ int main() {
 	printf("Pop: %d\n", StackPop(&myStack));
 	printf("P = %p\n", &myStack);
 	StackPrint(&myStack);
+	printf("Top: %d\n", StackTop(&myStack));
 	printf("Pop: %d\n", StackPop(&myStack));
 	printf("P = %p\n", myStack);
 	StackPrint(&myStack);
